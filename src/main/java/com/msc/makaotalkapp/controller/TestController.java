@@ -24,7 +24,7 @@ public class TestController {
 
     @GetMapping("/readAll")
     public Optional readAll(String id) {
-        return memberRepository.findById(id);
+        return memberRepository.findById((long) 1);
     }
 
 
@@ -34,7 +34,6 @@ public class TestController {
     }
 
     @GetMapping("/delete")
-    public void delete(String id) {
-        memberRepository.deleteById(id);
+    public void delete(String id) { memberRepository.deleteById((long)1);
     }
 }

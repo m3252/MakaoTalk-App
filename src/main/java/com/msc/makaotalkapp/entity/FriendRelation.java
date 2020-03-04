@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Entity(name="m_friend_relation")
@@ -31,10 +32,10 @@ public class FriendRelation {
 
     @Column
     @CreationTimestamp
-    private LocalDate r_date;
+    private LocalDateTime r_date;
 
     @Builder
-    public FriendRelation(Long user_id, Long friend_id, String friend_nickname, int status, int relationship, LocalDate r_date) {
+    public FriendRelation(Long user_id, Long friend_id, String friend_nickname, int status, int relationship, LocalDateTime r_date) {
         this.user_id = user_id;
         this.friend_id = friend_id;
         this.friend_nickname = friend_nickname;

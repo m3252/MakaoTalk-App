@@ -6,6 +6,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Entity(name="m_member")
@@ -50,14 +51,14 @@ public class Member {
 
     @Column
     @CreationTimestamp
-    private LocalDate r_date;
+    private LocalDateTime r_date;
 
     @Column
     @UpdateTimestamp
-    private LocalDate m_date;
+    private LocalDateTime m_date;
 
     @Builder
-    public Member(String email, String pw, String profile, String nickname, int birth, String phone, int gender, String state_message, String state_music, LocalDate r_date, LocalDate m_date) {
+    public Member(String email, String pw, String profile, String nickname, int birth, String phone, int gender, String state_message, String state_music, LocalDateTime r_date, LocalDateTime m_date) {
         this.email = email;
         this.pw = pw;
         this.profile = profile;

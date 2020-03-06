@@ -1,5 +1,5 @@
 package com.msc.makaotalkapp.repository;
-import com.msc.makaotalkapp.entity.Member;
+import com.msc.makaotalkapp.domain.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

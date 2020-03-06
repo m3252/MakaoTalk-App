@@ -1,10 +1,9 @@
-package com.msc.makaotalkapp.entity;
+package com.msc.makaotalkapp.domain.entity;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter

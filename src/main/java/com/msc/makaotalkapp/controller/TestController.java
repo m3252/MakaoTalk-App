@@ -1,21 +1,19 @@
 package com.msc.makaotalkapp.controller;
 
-import com.msc.makaotalkapp.entity.Member;
+import com.msc.makaotalkapp.domain.entity.Member;
 import com.msc.makaotalkapp.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Optional;
 
-//@RestController는 모든 메소드에 @ResponseBody를 적용해준다.
+//@RestController는 @Controller, @ResponseBody를 적용해준다.
 @RestController
 public class TestController {
 
     @Autowired
-    MemberRepository memberRepository;
+    private MemberRepository memberRepository;
 
     @GetMapping("/hello")
     public String hello(){

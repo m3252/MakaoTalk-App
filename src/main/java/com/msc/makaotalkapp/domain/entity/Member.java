@@ -1,11 +1,10 @@
-package com.msc.makaotalkapp.entity;
+package com.msc.makaotalkapp.domain.entity;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -16,11 +15,12 @@ import java.time.LocalDateTime;
  * */
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@ToString
 public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long member_id;
+    private Long memberId;
 
     @Column
     private String email;
@@ -56,6 +56,7 @@ public class Member {
     @Column
     @UpdateTimestamp
     private LocalDateTime m_date;
+
 
     @Builder
     public Member(String email, String pw, String profile, String nickname, int birth, String phone, int gender, String state_message, String state_music, LocalDateTime r_date, LocalDateTime m_date) {

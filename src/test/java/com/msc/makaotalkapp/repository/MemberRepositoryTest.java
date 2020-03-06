@@ -1,39 +1,24 @@
 package com.msc.makaotalkapp.repository;
 
-import com.msc.makaotalkapp.entity.Member;
+import com.msc.makaotalkapp.domain.entity.Member;
 
-import org.junit.After;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-
-@RunWith(SpringRunner.class)
 @SpringBootTest
-public class MemberRepositoryTest {
+class MemberRepositoryTest {
 
     @Autowired
-    MemberRepository memberRepository;
-
-    @After
-    public void cleanup() {
-        /**
-         이후 테스트 코드에 영향을 끼치지 않기 위해
-         테스트 메소드가 끝날때 마다 respository 전체 비우는 코드
-         **/
-
-        memberRepository.deleteAll();
-    }
+    private MemberRepository memberRepository;
 
     @Test
-    public void 목록불러오기() {
-
+    void givenMember() {
         /*
         given
         테스트 기반 환경을 구축하는 단계
@@ -60,8 +45,8 @@ public class MemberRepositoryTest {
         /*then
         테스트 결과 검증
         실제로 DB에 insert 되었는지 확인하기 위해 조회후, 입력된 값 확인*/
-        assertEquals(member.getEmail(), "test@naver.com");
-        assertEquals(member.getProfile(), "프로필경로");
+        assertThat(member.getEmail()).isEqualTo("test@naver.com");
+        assertThat(member.getProfile()).isEqualTo("프로필경로");
 
 
     }

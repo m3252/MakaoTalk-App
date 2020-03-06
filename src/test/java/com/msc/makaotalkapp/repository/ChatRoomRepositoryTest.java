@@ -1,34 +1,24 @@
 package com.msc.makaotalkapp.repository;
 
-import com.msc.makaotalkapp.entity.ChatRoom;
-import com.msc.makaotalkapp.entity.FriendRelation;
-import org.junit.After;
+import com.msc.makaotalkapp.domain.entity.ChatRoom;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
-public class ChatRoomRepositoryTest {
+class ChatRoomRepositoryTest {
 
     @Autowired
-    ChatRoomRepository chatRoomRepository;
-
-    @After
-    public void cleanup() {
-
-    }
+    private ChatRoomRepository chatRoomRepository;
 
     @Test
-    public void 친구관계불러오기() {
+    void givenChat() {
+        chatRoomRepository.deleteAll();
         //given
         LocalDateTime now = LocalDateTime.now();
         chatRoomRepository.save(ChatRoom.builder()
@@ -45,6 +35,7 @@ public class ChatRoomRepositoryTest {
         //then
         assertEquals(chatRoom.getUser_id(), (long) 3);
         assertEquals(chatRoom.getMessage(), "안녕?");
+
 
 
     }

@@ -1,32 +1,27 @@
 package com.msc.makaotalkapp.repository;
 
-import com.msc.makaotalkapp.entity.FriendRelation;
-import org.junit.After;
+import com.msc.makaotalkapp.domain.entity.FriendRelation;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
-public class FriendRelationRepositoryTest {
+class FriendRelationRepositoryTest {
 
     @Autowired
-    FriendRelationRepository friendRelationRepository;
-
-    @After
-    public void cleanup() {
-        friendRelationRepository.deleteAll();
-    }
+    private FriendRelationRepository friendRelationRepository;
 
     @Test
-    public void 친구관계불러오기() {
+    void givenFriends() {
+
+        friendRelationRepository.deleteAll();
+
         //given
         LocalDateTime now = LocalDateTime.now();
         friendRelationRepository.save(FriendRelation.builder()
@@ -40,10 +35,9 @@ public class FriendRelationRepositoryTest {
         List<FriendRelation> friendList = friendRelationRepository.findAll();
         FriendRelation friendRelation = friendList.get(0);
 
-
         //then
-        assertEquals(friendRelation.getFriend_id(), (long) 2);
-        assertEquals(friendRelation.getFriend_nickname(), "홍길동");
+        assertThat(friendRelation.getFriend_id()).isEqualTo((long) 2);
+        assertThat(friendRelation.getFriend_nickname()).isEqualTo("홍길동");
 
 
     }

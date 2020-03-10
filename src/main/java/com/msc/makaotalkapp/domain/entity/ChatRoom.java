@@ -7,33 +7,28 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Getter
 @Entity(name = "m_chat_room")
+@IdClass(ChatRoom.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ChatRoom {
+public class ChatRoom implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long chat_id;
+    private Long room_id;
 
-    private Long user_id;
+    @Id
+    private Long access_id;
 
-    private String message;
-
-    @CreationTimestamp
-    private LocalDateTime posted_on;
-
-    private String attachments;
+    private String room_name;
 
     @Builder
-    public ChatRoom(Long user_id, String message, LocalDateTime posted_on, String attachments) {
-        this.user_id = user_id;
-        this.posted_on = posted_on;
-        this.message = message;
-        this.attachments = attachments;
+    public ChatRoom(Long access_id, String room_name){
+        this.access_id = access_id;
+        this.room_name = room_name;
     }
-
 
 }

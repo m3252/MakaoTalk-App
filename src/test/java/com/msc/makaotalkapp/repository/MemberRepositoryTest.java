@@ -3,10 +3,11 @@ package com.msc.makaotalkapp.repository;
 import com.msc.makaotalkapp.domain.entity.Member;
 
 import org.junit.jupiter.api.Test;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
@@ -24,16 +25,14 @@ class MemberRepositoryTest {
         테스트 기반 환경을 구축하는 단계
         @builder의 사용법도 같이 확인
         */
+        LocalDateTime now = LocalDateTime.now();
         memberRepository.save(Member.builder()
                 .email("test@naver.com")
-                .birth(19910319)
+                .birth(now)
                 .gender(0)
                 .nickname("닉네임")
                 .phone("010-4586-3362")
-                .profile("프로필경로")
                 .pw("ㅂㅈㄷㅈㅂ아ㅐㅈㅂ러!@#")
-                .state_message("1023")
-                .state_music("23123")
                 .build());
 
         /*when
@@ -46,8 +45,7 @@ class MemberRepositoryTest {
         테스트 결과 검증
         실제로 DB에 insert 되었는지 확인하기 위해 조회후, 입력된 값 확인*/
         assertThat(member.getEmail()).isEqualTo("test@naver.com");
-        assertThat(member.getProfile()).isEqualTo("프로필경로");
-
+        assertThat(member.getR_date()).isEqualTo(now);
 
     }
 }

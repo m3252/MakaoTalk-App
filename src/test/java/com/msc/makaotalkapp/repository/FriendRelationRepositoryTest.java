@@ -25,8 +25,6 @@ class FriendRelationRepositoryTest {
         //given
         LocalDateTime now = LocalDateTime.now();
         friendRelationRepository.save(FriendRelation.builder()
-                .user_id((long) 1)
-                .friend_id((long) 2)
                 .friend_nickname("홍길동")
                 .relationship(0)
                 .status(0)

@@ -45,7 +45,6 @@ class MemberRepositoryTest {
         테스트 결과 검증
         실제로 DB에 insert 되었는지 확인하기 위해 조회후, 입력된 값 확인*/
         assertThat(member.getEmail()).isEqualTo("test@naver.com");
-        assertThat(member.getR_date()).isEqualTo(now);
 
     }
 }

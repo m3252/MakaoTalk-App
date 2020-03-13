@@ -4,22 +4,21 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Getter
 @Entity(name="m_settings")
-@IdClass(Settings.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
-public class Settings implements Serializable {
+public class Settings{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long settings_idx;
 
-    @Id
-    private Long user_id;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "member_id", name="member_id")
+    private Member member;
 
     private String profile;
 
@@ -32,8 +31,8 @@ public class Settings implements Serializable {
     private LocalDateTime r_date;
 
     @Builder
-    public Settings(Long user_id, String profile, String state_message, String state_music){
-        this.user_id = user_id;
+    public Settings(Member member, String profile, String state_message, String state_music){
+        this.member = member;
         this.profile = profile;
         this.state_message = state_message;
         this.state_music = state_music;

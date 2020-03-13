@@ -9,6 +9,9 @@ import javax.annotation.Resource;
 
 @Service
 @Slf4j
+
+
+
 public class MemberService {
 
     @Resource(description = "memberRepository")

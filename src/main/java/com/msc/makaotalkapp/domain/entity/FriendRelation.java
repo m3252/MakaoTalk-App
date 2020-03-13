@@ -9,18 +9,19 @@ import java.time.LocalDateTime;
 
 @Getter
 @Entity(name="m_friend_relation")
-@IdClass(FriendRelation.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class FriendRelation implements Serializable {
+public class FriendRelation{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long relation_id;
 
-    @Id
-    private Long user_id;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "member_id", name="user_id")
+    private Member user_id;
 
-    @Column(nullable = false)
-    private Long friend_id;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "member_id", name="friend_id")
+    private Member friend_id;
 
     private String friend_nickname;
 
@@ -34,7 +35,7 @@ public class FriendRelation implements Serializable {
     private LocalDateTime r_date;
 
     @Builder
-    public FriendRelation(Long user_id, Long friend_id, String friend_nickname, int status, int relationship){
+    public FriendRelation(Member user_id, Member friend_id, String friend_nickname, int status, int relationship){
         this.user_id = user_id;
         this.friend_id = friend_id;
         this.friend_nickname = friend_nickname;

@@ -2,6 +2,7 @@ package com.msc.makaotalkapp.controller;
 
 import com.msc.makaotalkapp.domain.entity.Member;
 import com.msc.makaotalkapp.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,11 +11,11 @@ import javax.annotation.Resource;
 import java.util.Optional;
 
 //@RestController는 @Controller, @ResponseBody를 적용해준다.
+@RequiredArgsConstructor
 @RestController
 public class TestController {
 
-    @Autowired
-    private MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
 
     @GetMapping("/hello")

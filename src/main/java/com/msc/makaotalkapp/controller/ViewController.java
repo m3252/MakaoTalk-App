@@ -10,10 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ViewController {
+
     @GetMapping("/login/view")
-    public void login(){ }
+    public String login(){
+        return "login";
+    }
 
     @GetMapping("/sign-up/view")
-    public void signUp(){}
+    public String signUp(){
+        return "sign-up";
+    }
 
 }

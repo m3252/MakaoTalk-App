@@ -31,7 +31,7 @@
 </main>
 <nav>
     <span class="nav__account">
-        <a href="/sign-up/view">회원가입</a> &verbar;
+        <a href="${pageContext.request.contextPath}/view/sign-up">회원가입</a> &verbar;
         <a href="#">마카오계정 찾기</a> &verbar;
         <a href="#">비밀번호 찾기</a>
     </span>

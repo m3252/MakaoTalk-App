@@ -2,12 +2,11 @@ package com.msc.makaotalkapp.controller;
 
 import com.msc.makaotalkapp.domain.entity.Member;
 import com.msc.makaotalkapp.repository.MemberRepository;
+import com.msc.makaotalkapp.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import java.util.Optional;
 
 //@RestController는 @Controller, @ResponseBody를 적용해준다.
@@ -16,7 +15,7 @@ import java.util.Optional;
 public class TestController {
 
     private final MemberRepository memberRepository;
-
+    private final MemberService memberService;
 
     @GetMapping("/hello")
     public String hello(){
@@ -37,4 +36,8 @@ public class TestController {
     @GetMapping("/delete")
     public void delete(String id) { memberRepository.deleteById((long)1);
     }
+
+
+
+
 }

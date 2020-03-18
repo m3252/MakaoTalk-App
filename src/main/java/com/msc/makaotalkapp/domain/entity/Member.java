@@ -6,6 +6,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Entity(name = "m_member")
@@ -38,6 +39,10 @@ public class Member {
 
     @Column(nullable = false)
     private int gender;
+
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinColumn(name="uid")
+    private List<MemberRole> roles;
 
 
     @Column

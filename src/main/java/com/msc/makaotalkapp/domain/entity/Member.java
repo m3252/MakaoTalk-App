@@ -39,12 +39,7 @@ public class Member {
 
     @Column(nullable = false)
     private int gender;
-
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-    @JoinColumn(name="uid")
-    private List<MemberRole> roles;
-
-
+    
     @Column
     @CreationTimestamp
     private LocalDateTime r_date;

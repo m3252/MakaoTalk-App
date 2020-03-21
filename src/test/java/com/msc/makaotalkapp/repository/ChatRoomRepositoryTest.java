@@ -19,22 +19,20 @@ class ChatRoomRepositoryTest {
     @Test
     void givenChat() {
         chatRoomRepository.deleteAll();
-        //given
-//        LocalDateTime now = LocalDateTime.now();
-//        chatRoomRepository.save(ChatRoom.builder()
-//                .message("안녕?")
-//                .attachments("url")
-//                .build()
-//        );
-//        //when
-//        List<ChatRoom> chatRoomList = chatRoomRepository.findAll();
-//        ChatRoom chatRoom = chatRoomList.get(0);
-//
-//
-//        //then
-//        assertEquals(chatRoom.getUser_id(), (long) 3);
-//        assertEquals(chatRoom.getMessage(), "안녕?");
-//
+//      given
+        LocalDateTime now = LocalDateTime.now();
+        chatRoomRepository.save(ChatRoom.builder()
+                .room_name("대화방 1번")
+                .build()
+        );
+        //when
+        List<ChatRoom> chatRoomList = chatRoomRepository.findAll();
+        ChatRoom chatRoom = chatRoomList.get(0);
+
+
+        //then
+        assertEquals(chatRoom.getRoom_name(), "대화방 1번");
+
 
 
     }
